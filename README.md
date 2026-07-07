@@ -1,6 +1,6 @@
-# C Language - IITB 
+# C Language - IITB & SIES GST
 
-Resources through IIT BOMBAY 
+Resources through IIT BOMBAY AND SIES
 
 
 Course info- https://portal.iitb.ac.in/asc/Courses
