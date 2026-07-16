@@ -8,14 +8,14 @@ int stack[MAX];
 void push(){
 
     if(top== MAX - 1)
-        {printf("STACK OVERFLOW");}
+        {printf("STACK OVERFLOW\n");}
     else
         {
             top++;
             printf("Enter Element :");
             scanf("%d",&stack[top]);
 
-            printf("\nElement PUSHED : %d",stack[top]);
+            printf("\nElement PUSHED : %d\n",stack[top]);
         }
 
 }
@@ -23,11 +23,11 @@ void push(){
 void pop(){
 
     if(top==-1)
-        {printf("STACK UNDERFLOW");}
+        {printf("STACK UNDERFLOW\n");}
     else
         {
 
-            printf("Element POPPED : %d",stack[top]);
+            printf("Element POPPED : %d\n",stack[top]);
             top--;
 
         }
@@ -36,16 +36,16 @@ void pop(){
 void peek(){
 
     if(top==-1)
-        {printf("STACK IS EMPTY");}
+        {printf("STACK IS EMPTY\n");}
     else
-        {printf("TOPMOST ELEMENT is %d ",stack[top]);}
+        {printf("TOPMOST ELEMENT is %d\n",stack[top]);}
 }
 
 
 void display(){
 
     if(top==-1)
-        {printf("STACK IS EMPTY");}
+        {printf("STACK IS EMPTY\n");}
     else
         {
             printf("The Elements are :\n");
@@ -66,7 +66,7 @@ printf("\n 1.PUSH \n 2.POP \n 3.PEEK \n 4.DISPLAY \n 5.EXIT \n \n");
 scanf("%d",&choice);
 
 
-do{
+while(choice!=5){
    
 	switch(choice)
 	{ case 1: push();
@@ -81,17 +81,15 @@ do{
 	  case 4: display();
 	  break;
 
-	  case 5: printf("EXITING.....");
-	  break;
-
-   
 	}
 
-    printf("\n\nENTER CHOICE : ");
+    printf("\n\nENTER CHOICE : \n");
     scanf("%d",&choice);
     
 
-} while(choice!=5);
+}
+
+printf("EXITING.....");
 
 
 //getch();
