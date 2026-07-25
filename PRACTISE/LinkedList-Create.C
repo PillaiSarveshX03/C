@@ -6,7 +6,7 @@ struct node{
     struct node *next;
 };
 
-struct node *head,*first,*second,*third,*temp,*newnode;
+struct node *head,*temp,*newnode;
 
 
 void create(){
@@ -58,8 +58,41 @@ void insertEnd(){
 }
 
 void insertpos(){
+int n=0;
 
+newnode =(struct node *)malloc(sizeof(struct node));
+printf("Enter the element : ");
+scanf("%d",&newnode->data);
+
+if(head==NULL){
+    head=newnode;
+    newnode->next=NULL;
+
+    return;
+}
+
+//display();
+printf("Enter The Position You want to Insert : ");
+scanf("%d",&n);
+
+temp=head;
+int i=1;
+
+while(temp!=NULL){
+
+if(i+1==n){
+
+    newnode->next=temp->next;
+    temp->next=newnode;
+    break;
     
+}
+
+i++;
+temp=temp->next;
+
+}
+
 }
 
 void display(){
@@ -75,7 +108,7 @@ while(temp!=NULL){
 }
 
 
-printf("\nCounts : %d",count);
+printf("\nCounts : %d \n",count);
 
 
 }
@@ -90,6 +123,10 @@ insertBeg();
 insertBeg();
 insertEnd();
 insertEnd();
+
+display();
+
+insertpos();
 
 display();
 
