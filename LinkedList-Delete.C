@@ -176,6 +176,52 @@ void deleteend(){
 
 void deletepos(){
 
+    int n=0;
+
+    if(head== NULL)
+        {
+            printf("List Empty..");
+            return;
+        }
+
+    if(head->next == NULL)
+        {
+            printf("Element %d Deleted..\n", head->data);
+
+            free(head);
+
+            head = NULL;
+
+            return;
+        }
+
+
+    printf("Enter The Position You want to Delete : ");
+    scanf("%d",&n);
+
+    int i=1;
+
+    temp=head;
+    
+    while(temp!=NULL){
+
+        if(i+1==n)
+            {
+                temp1=temp->next;
+                temp->next=temp1->next;
+
+                printf("Element %d Deleted..\n", temp1->data);
+                free(temp1);
+
+                return;
+            }
+
+
+        temp=temp->next;
+        i++;
+
+    }
+
 
 }
 
@@ -188,10 +234,11 @@ insertBeg();
 insertBeg();
 insertBeg();
 insertBeg();
+insertBeg();
+insertBeg();
 
 display();
-
-deleteend();
+deletepos();
 display();
 
 
