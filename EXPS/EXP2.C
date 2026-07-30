@@ -68,7 +68,7 @@ void display(){
 
 }
 
-void main(){
+int main(){
 
     printf("----- QUEUE USING ARRAY -----\n");
 
@@ -114,5 +114,5 @@ printf("EXITING.....");
 
 
 
-
+return 0;
 }
