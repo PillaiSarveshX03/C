@@ -1,143 +1,111 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node {
+struct node{
     int data;
     struct node *next;
 };
 
-struct node *head = NULL, *temp, *newnode, *prev;
+struct node *head,*temp,*newnode,*temp1;
 
-void create() {
-    newnode = (struct node *)malloc(sizeof(struct node));
 
-    if (newnode == NULL) {
-        printf("Memory allocation failed!\n");
-        return;
-    }
+void create(){
 
-    printf("Enter The Value : ");
-    scanf("%d", &newnode->data);
-    newnode->next = NULL;
+    newnode =(struct node *)malloc(sizeof(struct node));
+    printf("Enter the element : ");
+    scanf("%d",&newnode->data);
 
-    if (head == NULL) {
-        head = newnode;
-    } else {
-        temp = head;
+    head=newnode;
+    newnode->next=NULL;
+    
 
-        while (temp->next != NULL) {
-            temp = temp->next;
-        }
-
-        temp->next = newnode;
-    }
 }
 
-void insertBeg() {
-    newnode = (struct node *)malloc(sizeof(struct node));
+void insertBeg(){
 
-    if (newnode == NULL) {
-        printf("Memory allocation failed!\n");
-        return;
-    }
+    newnode =(struct node *)malloc(sizeof(struct node));
+    printf("Enter the element : ");
+    scanf("%d",&newnode->data);
 
-    printf("Enter The Value : ");
-    scanf("%d", &newnode->data);
-
-    newnode->next = head;
-    head = newnode;
+    newnode->next=head;
+    head= newnode;
 }
 
-void deleteBeg() {
-    if (head == NULL) {
-        printf("The List Is Empty !!!\n");
-        return;
+void insertEnd(){
+
+    
+    newnode =(struct node *)malloc(sizeof(struct node));
+    printf("Enter the element : ");
+    scanf("%d",&newnode->data);
+    
+    if(head==NULL){
+
+    head=newnode;
+    return;
     }
 
-    temp = head;
-    head = temp->next;
+    temp=head;
+    while(temp->next!=NULL){
 
-    printf("Element %d Has Been Deleted !!!\n", temp->data);
-    free(temp);
+        temp=temp->next;
+
+    }
+
+    newnode->next=NULL;
+    temp->next=newnode;
+    
+
 }
 
-void deleteEnd() {
-    if (head == NULL) {
-        printf("The List Is Empty !!!\n");
-        return;
-    }
+void display(){
 
-    if (head->next == NULL) {
-        printf("Deleted Element = %d\n", head->data);
-        free(head);
-        head = NULL;
-        return;
-    }
+temp = head;
 
-    temp = head;
+int count=0;
 
-    while (temp->next != NULL) {
-        prev = temp;
-        temp = temp->next;
-    }
-
-    prev->next = NULL;
-    printf("Deleted Element = %d\n", temp->data);
-    free(temp);
+while(temp!=NULL){
+    printf("%d ",temp->data);
+    temp=temp->next;
+    count++;
 }
 
-void display() {
-    if (head == NULL) {
-        printf("The List Is Empty !!!\n");
-        return;
-    }
 
-    temp = head;
-    printf("Linked List: ");
+printf("\nCounts : %d \n",count);
 
-    while (temp != NULL) {
-        printf("%d -> ", temp->data);
-        temp = temp->next;
-    }
 
-    printf("NULL\n");
 }
 
-int main(void) {
+int main(){
     int choice;
 
-    while (1) {
-        printf("\n===== Linked List Menu =====\n");
-        printf("1. Create Node\n");
+    while(1){
+        printf("\n=== Linked List Menu ===\n");
+
+
+        printf("1. Create\n");
         printf("2. Insert at Beginning\n");
-        printf("3. Delete from Beginning\n");
-        printf("4. Delete from End\n");
-        printf("5. Display List\n");
-        printf("6. Exit\n");
+        printf("3. Insert at End\n");
+        printf("4. Display\n");
+        printf("5. Exit\n");
+
+
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
-        switch (choice) {
-            case 1:
-                create();
-                break;
-            case 2:
-                insertBeg();
-                break;
-            case 3:
-                deleteBeg();
-                break;
-            case 4:
-                deleteEnd();
-                break;
-            case 5:
-                display();
-                break;
-            case 6:
-                printf("Exiting program...\n");
-                return 0;
-            default:
-                printf("Invalid choice!\n");
-        }
+        switch(choice){
+            case 1:create();
+                   break;
+            case 2:insertBeg();
+                   break;
+            case 3:insertEnd();
+                   break;
+            case 4:display();
+                   break;
+            case 5:printf("Exiting...\n");
+                   return 0;
+            default:printf("Invalid choice.\n");
+         }
     }
+
+    return 0;
 }
