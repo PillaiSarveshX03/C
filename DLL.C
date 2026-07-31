@@ -104,9 +104,79 @@ void display(){
 
 }
 
+void displayRev(){
+
+    if(head==NULL){
+        printf("The list Is Empty!!!");
+        return;
+    }
+
+    temp=head;
 
 
-int main(){
+
+
+    while(temp->next!=NULL){
+
+        temp=temp->next;
+
+    }
+
+
+    while(temp!=NULL){
+
+        printf("%d ",temp->data);
+        temp=temp->prev;
+
+    }
+
+}
+
+void insertpos(){
+
+    int pos;
+
+    printf("Enter The Position You Want to Enter.. : ");
+    scanf("%d",&pos);
+
+    if(head==NULL){
+
+    printf("The List Is Empty!!");
+
+    return;
+    }
+
+
+    newnode = (struct Node*)malloc(sizeof(struct Node));
+
+    printf("\nEnter The Element You Want to Insert At [%d] Position : ",pos);
+    scanf("%d",&newnode->data);
+    
+
+    
+    int n=1;
+    temp=head;
+    while(n!=pos){
+
+        temp=temp->next;
+        n++;
+
+    }
+    
+
+
+    newnode->next=temp;
+    newnode->prev=temp->prev;
+
+    (temp->prev)->next=newnode;
+    temp->prev=newnode;
+
+}
+
+
+
+/* int main(){
+
 
     int choice;
 
@@ -142,4 +212,24 @@ int main(){
     }
 
     return 0;
+}
+
+*/
+
+int main(){
+
+
+    create();
+    insertBeg();
+    insertBeg();
+    insertEnd();
+    display();
+    insertpos();
+    display();
+    
+    
+    
+    
+    return 0;
+
 }
