@@ -9,7 +9,7 @@ struct Node{
 
 };  
 
-struct Node *head=NULL, *temp, *newnode;
+struct Node *head=NULL, *temp, *newnode,*temp1, *temp2;
 
 
 void create(){
@@ -132,6 +132,29 @@ void displayRev(){
 
 }
 
+int count(){
+
+    int count=0;
+
+    if(head==NULL){
+
+        printf("List Is Empty... \n\n");
+
+        return 0;
+    }
+
+    temp=head;
+
+    while(temp!=NULL){
+
+        temp=temp->next;
+        count++;
+
+    }
+
+    return count;
+}
+
 void insertpos(){
 
     int pos;
@@ -170,6 +193,111 @@ void insertpos(){
 
     (temp->prev)->next=newnode;
     temp->prev=newnode;
+
+}
+
+void deleteEnd(){
+
+    if(head==NULL){
+
+    printf("The List Is Empty!!");
+
+    return;
+    }
+
+
+    temp=head;
+
+    while (temp->next!=NULL)
+    {
+        temp=temp->next;
+
+    }
+    
+    (temp->prev)->next=NULL;
+    
+    printf("Element %d Deleted...\n",temp->data);
+    free(temp);
+
+}
+
+void deleteBeg(){
+
+    if(head==NULL){
+
+    printf("The List Is Empty!!");
+
+    return;
+    }
+
+
+    temp=head;
+
+    head=temp->next;
+    (temp->next)->prev=NULL;
+
+    printf("Element %d Deleted\n",temp->data);
+    free(temp);
+}
+
+void deletepos(){
+
+    if(head==NULL){
+
+    printf("The List Is Empty!!");
+
+    return;
+    }
+
+    temp=head;
+
+    int pos;
+
+    printf("Enter The Position You Want to Delete.. : ");
+    scanf("%d",&pos);
+
+
+
+    if(pos==1){
+        deleteBeg();
+        return;
+    }
+
+    if(pos==count()){
+        deleteEnd();
+        return;
+    }
+
+
+    int n=1;
+
+
+    printf("1_____________________\n");
+    while(n!=pos){
+
+        temp=temp->next;
+        n++;
+    }
+
+    printf("2_____________________\n");
+    
+    printf("Element %d Deleted ",temp->data);
+
+
+    
+    printf("3_____________________\n");
+
+    temp1=temp->prev;
+    temp2=temp->next;
+    
+    printf("4_____________________\n");
+
+    temp1->next=temp2;
+    temp2->prev=temp1;
+
+    printf("5_____________________\n");
+
+    free(temp);
 
 }
 
@@ -224,7 +352,7 @@ int main(){
     insertBeg();
     insertEnd();
     display();
-    insertpos();
+    deletepos();
     display();
     
     
