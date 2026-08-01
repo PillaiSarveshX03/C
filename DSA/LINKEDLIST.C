@@ -95,6 +95,8 @@ temp=temp->next;
 
 }
 
+//READ
+
 void display(){
 
 temp = head;
@@ -112,6 +114,8 @@ printf("\nCounts : %d \n",count);
 
 
 }
+
+// DELETE
 
 void deletebeg(){
 
@@ -225,6 +229,45 @@ void deletepos(){
 
 }
 
+// SEARCH
+
+void search(){
+
+    if(head== NULL)
+        {
+            printf("List Empty..");
+            return;
+        }
+
+    int i=1;
+    int n;
+    int des=0;
+
+    printf("Enter The Elemnt you want To find..: ");
+    scanf("%d",&n);
+
+    temp=head;
+
+    while(temp!=NULL){
+
+        if(temp->data==n)
+            {
+                printf("Element %d found At %d Position..\n",n,i);
+                des=1;
+            }
+
+    
+        temp=temp->next;
+        i++;
+
+    }
+
+    if(des==0){printf("Element Not Found...\n");}
+
+   
+}
+
+
 
 int main(){
 
@@ -234,7 +277,7 @@ int ch;
 
     while(1){
 
-    printf("1. Create\n2. Insert At Beginning\n3. Insert At End\n4. Insert At Position\n5. Display\n6. Delete At Beginning\n7. Delete At End\n8. Delete At Position\n9. Exit\n");
+    printf("1. Create\n2. Insert At Beginning\n3. Insert At End\n4. Insert At Position\n5. Display\n6. Delete At Beginning\n7. Delete At End\n8. Delete At Position\n9. Search \n10. Exit\n");
     printf("Enter Your Choice : ");
     scanf("%d",&ch);
 
@@ -256,7 +299,9 @@ int ch;
                 break;
         case 8: deletepos();
                 break;
-        case 9: exit(0);
+        case 9: search();
+                break;
+        case 10: exit(0);
         default: printf("Invalid Choice..\n");
 
     }
