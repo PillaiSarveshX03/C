@@ -6,30 +6,98 @@ struct node{
     struct node *next;
 };
 
-struct node *head,*temp,*newnode,*temp1;
+struct node *head=NULL,*temp,*newnode,*temp1;
 
+
+// READ
+
+int count(){
+
+    if(head==NULL)
+    {
+        return 0;
+    }
+
+    temp = head;
+
+    int count=0;
+
+    while(temp->next!=head){
+    
+        temp=temp->next;
+        count++;
+    }
+
+    return count+1;
+}
+
+void display(){
+
+if(head==NULL){
+
+    printf("The list Is Empty...!!\n\n");
+    return;
+    }
+
+
+temp = head;
+
+
+do{
+    printf("%d ",temp->data);
+    temp=temp->next;
+} while(temp!=head);
+
+printf("\n\n");
+
+}
+
+
+
+// CREATE
 
 void create(){
+
+    if(head==NULL){
 
     newnode =(struct node *)malloc(sizeof(struct node));
     printf("Enter the element : ");
     scanf("%d",&newnode->data);
 
     head=newnode;
-    newnode->next=NULL;
+    newnode->next=head;
+
+    }
+    else{
+        printf("List Already Created...");
+
+    } 
     
 
 }
 
 void insertBeg(){
 
+    if(head==NULL){
+
+    printf("The list Is Empty...!!\n\n");
+    return;
+    }
+
+
     newnode =(struct node *)malloc(sizeof(struct node));
     printf("Enter the element : ");
     scanf("%d",&newnode->data);
 
+    temp=head;
+    temp->next=head;
+
     newnode->next=head;
-    head= newnode;
+    head = newnode;
+
+    
 }
+
 
 void insertEnd(){
 
@@ -40,45 +108,59 @@ void insertEnd(){
     
     if(head==NULL){
 
-    head=newnode;
+    printf("The list Is Empty...!!\n\n");
     return;
     }
 
+
     temp=head;
-    while(temp->next!=NULL){
+    while(temp->next!=head){
 
         temp=temp->next;
 
     }
 
-    newnode->next=NULL;
+    newnode->next=head;
     temp->next=newnode;
     
 
 }
 
 void insertpos(){
+
+if(head==NULL){
+
+    printf("The list Is Empty...!!\n\n");
+    return;
+    }
+
+
 int n=0;
+
+display();
+printf("Enter The Position You want to Insert : ");
+scanf("%d",&n);
+
+if(n==1){
+    insertBeg();
+    return;
+}
+
+if(n==count()){
+    insertEnd();
+    return;
+}
 
 newnode =(struct node *)malloc(sizeof(struct node));
 printf("Enter the element : ");
 scanf("%d",&newnode->data);
 
-if(head==NULL){
-    head=newnode;
-    newnode->next=NULL;
-
-    return;
-}
-
-//display();
-printf("Enter The Position You want to Insert : ");
-scanf("%d",&n);
-
 temp=head;
 int i=1;
 
-while(temp!=NULL){
+
+while(temp->next!=head){
+
 
 if(i+1==n){
 
@@ -95,25 +177,6 @@ temp=temp->next;
 
 }
 
-//READ
-
-void display(){
-
-temp = head;
-
-int count=0;
-
-while(temp!=NULL){
-    printf("%d ",temp->data);
-    temp=temp->next;
-    count++;
-}
-
-
-printf("\nCounts : %d \n",count);
-
-
-}
 
 // DELETE
 
